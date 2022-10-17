@@ -1,17 +1,27 @@
-﻿using Notes;
-using System;
-using System.Runtime.InteropServices;
-
-try
+﻿try
 {
     int pos = 1;
-    Menu();
+    FirstNote();
 
-        while (pos > 0 && pos < 10)
+        while (!false)
         {
             Console.SetCursorPosition(0, pos);
 
             ConsoleKeyInfo key = Console.ReadKey();
+            if (pos < 1)
+            {
+                pos = 1;
+                Console.SetCursorPosition(0, pos);
+                Console.WriteLine("->");
+                continue;
+            }
+            if (pos > 2)
+            {
+                pos = 2;
+                Console.SetCursorPosition(0, pos);
+                Console.WriteLine("->");
+                continue;
+            } 
             if (key.Key == ConsoleKey.UpArrow)
             {
                 pos--;
@@ -24,61 +34,71 @@ try
             {
                 break;
             }
+
+            if (key.Key == ConsoleKey.LeftArrow)
+            {
+                Cl();
+                LeftNote0();
+                continue;
+            }
             if (key.Key == ConsoleKey.Enter)
             {
                 if (pos == 1)
                 {
-                cl();
-                    Console.WriteLine("Это заметка 07.02.21");
+                Cl();
+                    Console.WriteLine("Прийти в шарагу\n----------------");
+                    Console.WriteLine("Описание: Кол-во пар узнаешь как придёшь");
+                    Console.WriteLine("Дата: 07.02.2021");
+                    
+                    ConsoleKeyInfo ssecondkey = Console.ReadKey();
+                    if (ssecondkey.Key == ConsoleKey.UpArrow)
+                    {
+                        Cl();
+                        FirstNote();
+                    }
                     continue;
                 }
-                //if (pos == 5)
-                //{
-                //cl();
 
-                //Note newRec = new Note();
-                //Console.WriteLine("Enter date");
-                //newRec.date = Console.ReadLine();
-                //cl();
-                //Console.WriteLine("Enter Record");
-                //newRec.text = Console.ReadLine();    
-                //cl();
-
-                //Console.WriteLine("text record\n -----------------------------------------------------------------\n\n");
-                //Console.WriteLine(newRec.text);
-                //Console.WriteLine("------------------------------------------------------------------");
-                //Console.WriteLine(newRec.date);
-
-               
-
-                //continue;
-
-                //}
+                if (pos == 2)
+                {
+                    Console.WriteLine("Непойти в шарагу\n----------------");
+                    Console.WriteLine("Описание: Чонить придумаешб");
+                    Console.WriteLine("Дата: 07.02.2021");
+                    
+                    ConsoleKeyInfo secondkey = Console.ReadKey();
+                    if (secondkey.Key == ConsoleKey.UpArrow)
+                    {
+                        Cl();
+                        FirstNote();
+                    }
+                }
             }
             Console.Clear();
-
-            Menu();
-
+            FirstNote();
             Console.SetCursorPosition(0, pos);
             Console.WriteLine("->");
         }
 
-        static void Menu()
+        static void FirstNote()
         {
-            Console.WriteLine("Выберите дату");
-            Console.WriteLine("  1. 07.02.21");
-            Console.WriteLine("  2. 08.02.21");
-            Console.WriteLine("  3. 11.02.21");
-            Console.WriteLine("  4. 11.04.21");
-            Console.WriteLine("  5. " );
-            Console.WriteLine("  Добавить заметку");
+            Console.WriteLine("Выбрана дата 07.02.2021");
+            Console.WriteLine("  1. Пойти в шарагу");
+            Console.WriteLine("  2. Непойти в шарагу");
+        }
+
+        static void LeftNote0()
+        {
+            Console.WriteLine("Выбрана дата 06.02.2021");
+            Console.WriteLine("  1. Шашлычокб");
+            Console.WriteLine("  2. Купим кабачокб");
         }
     
-        static void cl()
+        static void Cl()
     {
         Console.Clear();
         Console.SetCursorPosition(0, 0);
     }
+        
     }
 
 catch(Exception)
