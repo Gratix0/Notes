@@ -1,174 +1,491 @@
 ﻿using Note;
 using Notes;
+
 try
 {
+    int noteCount = 0;
     int pos = 1;
-    Note.Notes.FirstNote();
-
-    while (!false)
-    {
-        Console.SetCursorPosition(0, pos);
-
-        ConsoleKeyInfo key = Console.ReadKey();
-
-        if (key.Key == ConsoleKey.UpArrow && pos < 3)
+    
+        do
         {
-            --pos;
-        }
-        if (key.Key == ConsoleKey.DownArrow && pos > 0)
-        {
-            ++pos;
-        }
-        if (pos > 2)
-        {
-            pos = 2;
-            Console.SetCursorPosition(0, pos);
-            Console.WriteLine("->");
-            continue;
-        }
-        if (pos < 1)
-        {
-            pos = 1;
-            Console.SetCursorPosition(0, pos);
-
-            continue;
-        }
-
-        if (key.Key == ConsoleKey.Escape)
-        {
-            break;
-        }
-
-        if (key.Key == ConsoleKey.LeftArrow)
-        {
-            while (!false)
+            
+            if (noteCount == 0)
             {
-                Console.SetCursorPosition(0, pos);
-
-                ConsoleKeyInfo key = Console.ReadKey();
-
-                if (key.Key == ConsoleKey.UpArrow && pos < 3)
+                while (!false)
                 {
-                    --pos;
-                }
-                if (key.Key == ConsoleKey.DownArrow && pos > 0)
-                {
-                    ++pos;
-                }
-                if (pos > 2)
-                {
-                    pos = 2;
+                    Console.Clear();
+                    Note.Notes.FirstNote();
                     Console.SetCursorPosition(0, pos);
                     Console.WriteLine("->");
-                    continue;
-                }
-                if (pos < 1)
-                {
-                    pos = 1;
-                    Console.SetCursorPosition(0, pos);
 
-                    continue;
-                }
 
-                if (key.Key == ConsoleKey.Escape)
-                {
-                    break;
-                }
+                    ConsoleKeyInfo key = Console.ReadKey();
 
-                if (key.Key == ConsoleKey.Enter)
-                {
-                    if (pos == 1)
+                    if (key.Key == ConsoleKey.UpArrow && pos < 3)
                     {
-                        Cl();
-                        Console.WriteLine("Прийти в шарагу\n----------------");
-                        Console.WriteLine("Описание: Кол-во пар узнаешь как придёшь");
-                        Console.WriteLine("Дата: 07.02.2021");
+                        --pos;
+                    }
 
-                        ConsoleKeyInfo ssecondkey = Console.ReadKey();
-                        if (ssecondkey.Key == ConsoleKey.UpArrow)
-                        {
-                            Cl();
-                            Note.Notes.FirstNote();
-                        }
+                    if (key.Key == ConsoleKey.DownArrow && pos > 0)
+                    {
+                        ++pos;
+                    }
+
+                    if (pos > 2)
+                    {
+                        pos = 2;
+                        Console.SetCursorPosition(0, pos);
+                        Console.WriteLine("->");
                         continue;
                     }
 
-                    if (pos == 2)
+                    if (pos < 1)
                     {
-                        Cl();
-                        Console.WriteLine("Непойти в шарагу\n----------------");
-                        Console.WriteLine("Описание: Чонить придумаешб");
-                        Console.WriteLine("Дата: 07.02.2021");
+                        pos = 1;
+                        Console.SetCursorPosition(0, pos);
 
-                        ConsoleKeyInfo secondkey = Console.ReadKey();
-                        if (secondkey.Key == ConsoleKey.UpArrow)
+                        continue;
+                    }
+
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.LeftArrow)
+                    {
+                        noteCount--;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.RightArrow)
+                    {
+                        noteCount++;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        if (pos == 1)
                         {
                             Cl();
-                            Note.Notes.FirstNote();
+                            Console.WriteLine("Прийти в шарагу\n----------------");
+                            Console.WriteLine("Описание: Кол-во пар узнаешь как придёшь");
+                            Console.WriteLine("Дата: 07.02.2021");
+
+                            ConsoleKeyInfo ssecondkey = Console.ReadKey();
+                            if (ssecondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.FirstNote();
+                            }
+
+                            continue;
+                        }
+
+                        if (pos == 2)
+                        {
+                            Cl();
+                            Console.WriteLine("Непойти в шарагу\n----------------");
+                            Console.WriteLine("Описание: Чонить придумаешб");
+                            Console.WriteLine("Дата: 07.02.2021");
+
+                            ConsoleKeyInfo secondkey = Console.ReadKey();
+                            if (secondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.FirstNote();
+                            }
                         }
                     }
                 }
-                Console.Clear();
-                Note.Notes.FirstNote();
-                Console.SetCursorPosition(0, pos);
-                Console.WriteLine("->");
-                continue;
-
             }
-            if (key.Key == ConsoleKey.Enter)
+
+            if (noteCount == -1)
             {
-                if (pos == 1)
+                while (!false)
                 {
-                    Cl();
-                    Console.WriteLine("Прийти в шарагу\n----------------");
-                    Console.WriteLine("Описание: Кол-во пар узнаешь как придёшь");
-                    Console.WriteLine("Дата: 07.02.2021");
-
-                    ConsoleKeyInfo ssecondkey = Console.ReadKey();
-                    if (ssecondkey.Key == ConsoleKey.UpArrow)
+                    do
                     {
                         Cl();
-                        Note.Notes.FirstNote();
+                        Note.Notes.Noteminus1();
+                    } while (false);
+
+                    Console.SetCursorPosition(0, pos);
+                    Console.WriteLine("->");
+                    ConsoleKeyInfo key = Console.ReadKey();
+
+                    if (key.Key == ConsoleKey.UpArrow && pos < 3)
+                    {
+                        --pos;
                     }
-                    continue;
+
+                    if (key.Key == ConsoleKey.DownArrow && pos > 0)
+                    {
+                        ++pos;
+                    }
+
+                    if (pos > 2)
+                    {
+                        pos = 2;
+                        Console.SetCursorPosition(0, pos);
+                        Console.WriteLine("->");
+                        continue;
+                    }
+
+                    if (pos < 1)
+                    {
+                        pos = 1;
+                        Console.SetCursorPosition(0, pos);
+
+                        continue;
+                    }
+
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.LeftArrow)
+                    {
+                        noteCount--;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.RightArrow)
+                    {
+                        noteCount++;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        if (pos == 1)
+                        {
+                            Cl();
+                            Console.WriteLine("Шашлычокб\n----------------");
+                            Console.WriteLine("Описание: Зайти в пятёрочку купить курочку");
+                            Console.WriteLine("Дата: 06.02.2021");
+
+                            ConsoleKeyInfo ssecondkey = Console.ReadKey();
+                            if (ssecondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.Noteminus1();
+                            }
+
+                            continue;
+                        }
+
+                        if (pos == 2)
+                        {
+                            Cl();
+                            Console.WriteLine("Купим кабачокб\n----------------");
+                            Console.WriteLine("Описание: Ну что сказать... Купи ");
+                            Console.WriteLine("Дата: 06.02.2021");
+
+                            ConsoleKeyInfo secondkey = Console.ReadKey();
+                            if (secondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.Noteminus1();
+                            }
+                        }
+                    }
+
+
                 }
+            }
 
-                if (pos == 2)
+            if (noteCount == -2)
+            {
+                while (!false)
                 {
-                    Cl();
-                    Console.WriteLine("Непойти в шарагу\n----------------");
-                    Console.WriteLine("Описание: Чонить придумаешб");
-                    Console.WriteLine("Дата: 07.02.2021");
 
-                    ConsoleKeyInfo secondkey = Console.ReadKey();
-                    if (secondkey.Key == ConsoleKey.UpArrow)
+                    do
                     {
                         Cl();
-                        Note.Notes.FirstNote();
+                        Note.Notes.Noteminus2();
+                    } while (false);
+
+                    Console.SetCursorPosition(0, pos);
+                    Console.WriteLine("->");
+                    ConsoleKeyInfo key = Console.ReadKey();
+
+                    if (key.Key == ConsoleKey.UpArrow && pos < 3)
+                    {
+                        pos++;
+                    }
+
+                    if (key.Key == ConsoleKey.DownArrow && pos > 0)
+                    {
+                        pos++;
+                    }
+
+                    if (pos < 1 || pos > 1)
+                    {
+                        pos = 1;
+                        Console.SetCursorPosition(0, pos);
+
+                        continue;
+                    }
+
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.LeftArrow)
+                    {
+                        noteCount--;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.RightArrow)
+                    {
+                        noteCount++;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        if (pos == 1)
+                        {
+                            Cl();
+                            Console.WriteLine(
+                                "Дорогой дневник, сегодня я испытал такую боль и унижение...\n----------------");
+                            Console.WriteLine("Описание: Суецыд");
+                            Console.WriteLine("Дата: 05.02.2021");
+
+                            ConsoleKeyInfo ssecondkey = Console.ReadKey();
+                            if (ssecondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.Noteminus2();
+                            }
+
+                            continue;
+                        }
                     }
                 }
             }
-            Console.Clear();
-            Note.Notes.FirstNote();
-            Console.SetCursorPosition(0, pos);
-            Console.WriteLine("->");
-        }
 
-        static void Cl()
-        {
-            Console.Clear();
-            Console.SetCursorPosition(0, 0);
-        }
-
-    }
-}
+            if (noteCount == 1)
+            {
+                while (!false)
+                {
 
 
+                    do
+                    {
+                        Cl();
+                        Note.Notes.NotePlus1();
+                    } while (false);
+
+                    Console.SetCursorPosition(0, pos);
+                    Console.WriteLine("->");
+                    ConsoleKeyInfo key = Console.ReadKey();
+
+                    if (key.Key == ConsoleKey.UpArrow && pos < 3)
+                    {
+                        --pos;
+                    }
+
+                    if (key.Key == ConsoleKey.DownArrow && pos > 0)
+                    {
+                        ++pos;
+                    }
+
+                    if (pos > 2)
+                    {
+                        pos = 2;
+                        Console.SetCursorPosition(0, pos);
+                        Console.WriteLine("->");
+                        continue;
+                    }
+
+                    if (pos < 1)
+                    {
+                        pos = 1;
+                        Console.SetCursorPosition(0, pos);
+
+                        continue;
+                    }
+
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.LeftArrow)
+                    {
+                        noteCount--;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.RightArrow)
+                    {
+                        noteCount++;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        if (pos == 1)
+                        {
+                            Cl();
+                            Console.WriteLine("Ну допустим запись тут\n----------------");
+                            Console.WriteLine("Описание: Есть такое дело");
+                            Console.WriteLine("Дата: 08.02.2021");
+
+                            ConsoleKeyInfo ssecondkey = Console.ReadKey();
+                            if (ssecondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.NotePlus1();
+                            }
+
+                            continue;
+                        }
+
+                        if (pos == 2)
+                        {
+                            Cl();
+                            Console.WriteLine("И тут\n----------------");
+                            Console.WriteLine("Описание: И тут есть такое дело");
+                            Console.WriteLine("Дата: 08.02.2021");
+
+                            ConsoleKeyInfo ssecondkey = Console.ReadKey();
+                            if (ssecondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.NotePlus1();
+                            }
+
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            if (noteCount == 2)
+            {
+                while (!false)
+                {
+
+
+                    do
+                    {
+                        Cl();
+                        Note.Notes.NotePlus2();
+                    } while (false);
+
+                    Console.SetCursorPosition(0, pos);
+                    Console.WriteLine("->");
+                    ConsoleKeyInfo key = Console.ReadKey();
+
+                    if (key.Key == ConsoleKey.UpArrow && pos < 3)
+                    {
+                        --pos;
+                    }
+
+                    if (key.Key == ConsoleKey.DownArrow && pos > 0)
+                    {
+                        ++pos;
+                    }
+
+                    if (pos > 2)
+                    {
+                        pos = 2;
+                        Console.SetCursorPosition(0, pos);
+                        Console.WriteLine("->");
+                        continue;
+                    }
+
+                    if (pos < 1)
+                    {
+                        pos = 1;
+                        Console.SetCursorPosition(0, pos);
+
+                        continue;
+                    }
+
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.LeftArrow)
+                    {
+                        noteCount--;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.RightArrow)
+                    {
+                        noteCount++;
+                        break;
+                    }
+
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        if (pos == 1)
+                        {
+                            Cl();
+                            Console.WriteLine("Сдать практическую №4\n----------------");
+                            Console.WriteLine("Описание: Сдамб");
+                            Console.WriteLine("Дата: 09.02.2021");
+
+                            ConsoleKeyInfo ssecondkey = Console.ReadKey();
+                            if (ssecondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.NotePlus2();
+                            }
+
+                            continue;
+                        }
+
+                        if (pos == 2)
+                        {
+                            Cl();
+                            Console.WriteLine("Придумать алгаритм добавления новой записи\n----------------");
+                            Console.WriteLine("Описание: Когда-нибудь сделаю");
+                            Console.WriteLine("Дата: 09.02.2021");
+
+                            ConsoleKeyInfo ssecondkey = Console.ReadKey();
+                            if (ssecondkey.Key == ConsoleKey.UpArrow)
+                            {
+                                Cl();
+                                Note.Notes.NotePlus2();
+                            }
+
+                            continue;
+                        }
+                    }
+                }
+            }
+
+            if (noteCount > 2 )
+            {
+                noteCount = 2;
+            }
+            if (noteCount < -2 )
+            {
+                noteCount = -2;
+            }
+            static void Cl()
+            {
+                Console.Clear();
+                Console.SetCursorPosition(0, 0);
+            }
+        } while (noteCount > -2 || noteCount < 2);
+    
+} 
 catch (Exception)
 {
     Console.Clear();
     Console.SetCursorPosition(0, 0);
 
     Console.WriteLine("\n\n\n\n\n\n\nТы что-то сломал");
-    Console.ReadLine();
 }
