@@ -1,14 +1,10 @@
-﻿using Note;
-using Notes;
-
-try
+﻿try
 {
     int noteCount = 0;
     int pos = 1;
     
         do
         {
-            
             if (noteCount == 0)
             {
                 while (!false)
@@ -17,8 +13,7 @@ try
                     Note.Notes.FirstNote();
                     Console.SetCursorPosition(0, pos);
                     Console.WriteLine("->");
-
-
+                    
                     ConsoleKeyInfo key = Console.ReadKey();
 
                     if (key.Key == ConsoleKey.UpArrow && pos < 3)
@@ -43,7 +38,6 @@ try
                     {
                         pos = 1;
                         Console.SetCursorPosition(0, pos);
-
                         continue;
                     }
 
@@ -73,14 +67,12 @@ try
                             Console.WriteLine("Описание: Кол-во пар узнаешь как придёшь");
                             Console.WriteLine("Дата: 07.02.2021");
 
-                            ConsoleKeyInfo ssecondkey = Console.ReadKey();
-                            if (ssecondkey.Key == ConsoleKey.UpArrow)
+                            ConsoleKeyInfo ssecondKey = Console.ReadKey();
+                            if (ssecondKey.Key == ConsoleKey.UpArrow)
                             {
                                 Cl();
                                 Note.Notes.FirstNote();
-                            }
-
-                            continue;
+                            } continue;
                         }
 
                         if (pos == 2)
@@ -129,16 +121,13 @@ try
                     {
                         pos = 2;
                         Console.SetCursorPosition(0, pos);
-                        Console.WriteLine("->");
-                        continue;
+                        Console.WriteLine("->"); continue;
                     }
 
                     if (pos < 1)
                     {
                         pos = 1;
-                        Console.SetCursorPosition(0, pos);
-
-                        continue;
+                        Console.SetCursorPosition(0, pos); continue;
                     }
 
                     if (key.Key == ConsoleKey.Escape)
@@ -148,14 +137,12 @@ try
 
                     if (key.Key == ConsoleKey.LeftArrow)
                     {
-                        noteCount--;
-                        break;
+                        noteCount--; break;
                     }
 
                     if (key.Key == ConsoleKey.RightArrow)
                     {
-                        noteCount++;
-                        break;
+                        noteCount++; break;
                     }
 
                     if (key.Key == ConsoleKey.Enter)
@@ -172,9 +159,7 @@ try
                             {
                                 Cl();
                                 Note.Notes.Noteminus1();
-                            }
-
-                            continue;
+                            } continue;
                         }
 
                         if (pos == 2)
@@ -201,7 +186,6 @@ try
             {
                 while (!false)
                 {
-
                     do
                     {
                         Cl();
@@ -225,9 +209,7 @@ try
                     if (pos < 1 || pos > 1)
                     {
                         pos = 1;
-                        Console.SetCursorPosition(0, pos);
-
-                        continue;
+                        Console.SetCursorPosition(0, pos); continue;
                     }
 
                     if (key.Key == ConsoleKey.Escape)
@@ -263,7 +245,6 @@ try
                                 Cl();
                                 Note.Notes.Noteminus2();
                             }
-
                             continue;
                         }
                     }
@@ -274,8 +255,6 @@ try
             {
                 while (!false)
                 {
-
-
                     do
                     {
                         Cl();
@@ -300,16 +279,13 @@ try
                     {
                         pos = 2;
                         Console.SetCursorPosition(0, pos);
-                        Console.WriteLine("->");
-                        continue;
+                        Console.WriteLine("->"); continue;
                     }
 
                     if (pos < 1)
                     {
                         pos = 1;
-                        Console.SetCursorPosition(0, pos);
-
-                        continue;
+                        Console.SetCursorPosition(0, pos); continue;
                     }
 
                     if (key.Key == ConsoleKey.Escape)
@@ -343,9 +319,7 @@ try
                             {
                                 Cl();
                                 Note.Notes.NotePlus1();
-                            }
-
-                            continue;
+                            } continue;
                         }
 
                         if (pos == 2)
@@ -361,7 +335,6 @@ try
                                 Cl();
                                 Note.Notes.NotePlus1();
                             }
-
                             continue;
                         }
                     }
@@ -372,8 +345,6 @@ try
             {
                 while (!false)
                 {
-
-
                     do
                     {
                         Cl();
@@ -405,9 +376,7 @@ try
                     if (pos < 1)
                     {
                         pos = 1;
-                        Console.SetCursorPosition(0, pos);
-
-                        continue;
+                        Console.SetCursorPosition(0, pos); continue;
                     }
 
                     if (key.Key == ConsoleKey.Escape)
@@ -441,9 +410,7 @@ try
                             {
                                 Cl();
                                 Note.Notes.NotePlus2();
-                            }
-
-                            continue;
+                            } continue;
                         }
 
                         if (pos == 2)
@@ -459,7 +426,6 @@ try
                                 Cl();
                                 Note.Notes.NotePlus2();
                             }
-
                             continue;
                         }
                     }
@@ -486,6 +452,5 @@ catch (Exception)
 {
     Console.Clear();
     Console.SetCursorPosition(0, 0);
-
     Console.WriteLine("\n\n\n\n\n\n\nТы что-то сломал");
 }
